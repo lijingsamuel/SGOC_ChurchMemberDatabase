@@ -22,4 +22,6 @@ export const BLOOD_GROUPS = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-', '
 
 export const MARITAL_STATUSES = ['Single', 'Married', 'Widowed', 'Divorced'];
 
+export const PRAYER_GROUPS = ['St. Thomas', 'St. George', 'St. Gregorios', "St. Mary's", 'Not Joined'];
+
 export const STATUS_OPTIONS = ['Draft', 'Pending', 'Completed'];

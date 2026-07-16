@@ -11,6 +11,7 @@ import { renderMembersStep, hasUnsavedMemberEdit } from './members.js';
 import {
   el, toast, confirmDialog, newLocalId, isValidPhone
 } from './utils.js';
+import { PRAYER_GROUPS } from './config.js';
 
 const STEP_TITLES = ['Family Details', 'Family Members', 'Review', 'Submit'];
 let autosaveTimer = null;
@@ -213,7 +214,7 @@ function renderStep1(body, state) {
     input('Address', f, 'Address'),
     input('Phone Number', f, 'Phone', 'tel'),
     input('WhatsApp Number', f, 'WhatsApp', 'tel'),
-    input('Prayer Group', f, 'PrayerGroup')
+    select('Prayer Group', f, 'PrayerGroup', PRAYER_GROUPS, 'Select Prayer Group')
   ]);
   body.appendChild(textarea('Remarks', f, 'Remarks'));
 }
@@ -366,6 +367,25 @@ function textarea(label, obj, key) {
 function readonly(label, value) {
   return el('div', { class: 'field' }, [
     el('label', { class: 'field-label' }, [label]),
-    el('input', { class: 'input', value: value, disabled: 'disabled' })
+    el('input', { class: 'input', value: value, disabled: true })
+  ]);
+}
+
+function select(label, obj, key, options, placeholder) {
+  const currentEmpty = !obj[key];
+  const optionNodes = [];
+  if (placeholder && currentEmpty) {
+    optionNodes.push(el('option', { value: '', selected: true, disabled: true }, [placeholder]));
+  }
+  options.forEach(opt => optionNodes.push(el('option', {
+    value: opt, selected: obj[key] === opt
+  }, [opt])));
+  const field = el('select', {
+    class: 'input select',
+    onchange: (e) => { obj[key] = e.target.value; }
+  }, optionNodes);
+  return el('div', { class: 'field' }, [
+    el('label', { class: 'field-label' }, [label]),
+    field
   ]);
 }
