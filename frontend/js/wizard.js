@@ -200,9 +200,10 @@ function validateStep(state) {
 function renderStep1(body, state) {
   const f = state.family;
   body.appendChild(el('h2', { class: 'step-title' }, ['Family Information']));
-  body.appendChild(readonly('Form Number', f.FamilyID || 'Will be generated on save'));
   grid(body, [
-    input('Family ID *', f, 'HouseNumber'),
+    state.isNew
+      ? input('Family ID *', f, 'HouseNumber')
+      : readonly('Family ID', f.HouseNumber),
     input('Family Name *', f, 'FamilyName'),
     input('Head of Family', f, 'HeadOfFamily'),
     input('Address', f, 'Address'),

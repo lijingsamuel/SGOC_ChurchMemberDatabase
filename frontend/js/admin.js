@@ -170,8 +170,8 @@ async function renderFamiliesTab(content, navigate) {
     families.forEach(f => {
       listEl.appendChild(el('div', { class: 'family-card' }, [
         el('div', { class: 'family-card__main', onclick: () => navigate(`#/wizard?id=${encodeURIComponent(f.familyId)}`) }, [
-          el('div', { class: 'family-card__title' }, [f.familyName || `Family ID ${f.houseNumber}`]),
-          el('div', { class: 'family-card__meta' }, [`${f.familyId} • ${f.volunteer || 'Unassigned'} • Family ID ${f.houseNumber || '-'}`])
+          el('div', { class: 'family-card__title' }, [f.familyName || `Family ID ${f.familyId}`]),
+          el('div', { class: 'family-card__meta' }, [`Family ID ${f.familyId || '-'} • ${f.volunteer || 'Unassigned'}`])
         ]),
         el('div', { class: 'family-card__side' }, [
           el('span', { class: statusBadgeClass(f.status) }, [f.status]),

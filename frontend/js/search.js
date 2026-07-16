@@ -52,7 +52,7 @@ function renderResults(container, families, navigate) {
     }, [
       el('div', { class: 'family-card__main' }, [
         el('div', { class: 'family-card__title' }, [f.familyName || `Family ID ${f.houseNumber}`]),
-        el('div', { class: 'family-card__meta' }, [`Form Number: ${f.familyId || 'Not yet generated'} • Family ID: ${f.houseNumber || '-'} • ${f.phone || 'No phone'}`])
+        el('div', { class: 'family-card__meta' }, [`Family ID: ${f.familyId || '-'} • ${f.phone || 'No phone'}`])
       ]),
       el('div', { class: 'family-card__side' }, [
         el('span', { class: statusBadgeClass(f.status) }, [f.status])
