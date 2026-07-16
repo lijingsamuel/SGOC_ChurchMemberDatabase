@@ -7,7 +7,7 @@
 
 import { apiCall } from './api.js';
 import { DraftStore } from './db.js';
-import { renderMembersStep } from './members.js';
+import { renderMembersStep, hasUnsavedMemberEdit } from './members.js';
 import {
   el, toast, confirmDialog, newLocalId, isValidPhone
 } from './utils.js';
@@ -189,6 +189,10 @@ function validateStep(state) {
     if (!isValidPhone(f.WhatsApp)) { toast('WhatsApp Number looks invalid.', 'warning'); return false; }
   }
   if (state.step === 2) {
+    if (hasUnsavedMemberEdit()) {
+      toast('Please save or cancel the member you are currently editing before continuing.', 'warning');
+      return false;
+    }
     if (membersMissingGender(state)) {
       toast('Gender is required for every family member.', 'warning');
       return false;

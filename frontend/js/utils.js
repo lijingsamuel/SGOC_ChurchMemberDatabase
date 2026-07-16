@@ -9,10 +9,11 @@ export function qsa(sel, root) { return Array.from((root || document).querySelec
 export function el(tag, attrs, children) {
   const node = document.createElement(tag);
   Object.entries(attrs || {}).forEach(([k, v]) => {
+    if (v === undefined || v === null || v === false) return;
     if (k === 'class') node.className = v;
     else if (k === 'html') node.innerHTML = v;
     else if (k.startsWith('on') && typeof v === 'function') node.addEventListener(k.slice(2), v);
-    else node.setAttribute(k, v);
+    else node.setAttribute(k, v === true ? '' : v);
   });
   (children || []).forEach(c => node.appendChild(typeof c === 'string' ? document.createTextNode(c) : c));
   return node;

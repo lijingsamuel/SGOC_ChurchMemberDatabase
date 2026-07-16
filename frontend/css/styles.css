@@ -335,6 +335,7 @@ h1, h2, h3 { margin: 0 0 4px; line-height: 1.25; }
 .member-card__controls { display: flex; gap: 6px; }
 .member-card__form { padding: 4px 16px 16px; border-top: 1px solid var(--border); }
 .member-card--open { box-shadow: var(--shadow-md); }
+.member-card__actions { margin-top: 10px; }
 
 /* ---------------------------------- Review ---------------------------------- */
 
