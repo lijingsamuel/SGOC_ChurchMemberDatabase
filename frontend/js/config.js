@@ -14,7 +14,7 @@ export const CONFIG = {
 export const GENDERS = ['Male', 'Female'];
 
 export const RELATIONS = [
-  'Head', 'Spouse', 'Son', 'Daughter', 'Father', 'Mother',
+  'Head', 'Spouse', 'Son', 'Daughter', 'Son-in-Law', 'Daughter-in-Law', 'Father', 'Mother',
   'Brother', 'Sister', 'Grandfather', 'Grandmother', 'Grandson', 'Granddaughter', 'Other'
 ];
 

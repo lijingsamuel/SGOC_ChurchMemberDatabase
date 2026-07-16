@@ -213,7 +213,12 @@ function selectField(label, obj, key, options, opts) {
   }, [opt])));
   const select = el('select', {
     class: 'input select' + (opts.required && currentEmpty ? ' input--invalid' : ''),
-    onchange: (e) => { obj[key] = e.target.value; }
+    onchange: (e) => {
+      obj[key] = e.target.value;
+      if (opts.required) {
+        e.target.classList.toggle('input--invalid', !e.target.value);
+      }
+    }
   }, optionNodes);
   return fieldWrap(label + (opts.required ? ' *' : ''), select);
 }
